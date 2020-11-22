@@ -60,7 +60,7 @@ const Recovery = () => {
           positionX="50%"
           positionY="50%"
           positionTwoX="50%"
-          positionTwoY="63%"
+          positionTwoY="64%"
           classNameTwo="mediaGameSvg"
         />
       </ContainerOne>
@@ -70,20 +70,21 @@ const Recovery = () => {
           texte="Récupération"
           width="20rem"
           height="3em"
-          fontSize="30px"
+          fontSize="20px"
           maxWidth="18rem"
         />
         <LineContainer>
-            <Line></Line>
-            <Paragraphe>Or</Paragraphe>
-            <Line></Line>
+          <Line></Line>
+          <Paragraphe>Or</Paragraphe>
+          <Line></Line>
         </LineContainer>
         <Button
           texte="Connexion"
           width="20rem"
           height="3em"
-          fontSize="30px"
+          fontSize="20px"
           maxWidth="18rem"
+          link="/login"
         />
       </ContainerTwo>
     </Container>

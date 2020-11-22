@@ -35,14 +35,11 @@ const HomePage = () => {
   return (
     <Container>
       <ContainerEmpty>
-        <QuizGameSvg 
-        texteOne="Quiz"
-        positionX="50%"
-        positionY="80%"
-        texteTwo="Game"
-        positionTwoX="55%"
-        positionTwoY="96%"
-        className="mediaQuizSvg"
+        <QuizGameSvg
+          texteOne="Quiz Game"
+          positionX="50%"
+          positionY="80%"
+          className="mediaQuizSvg"
         />
       </ContainerEmpty>
       <ContainerButton>
@@ -52,6 +49,7 @@ const HomePage = () => {
           height="3em"
           fontSize="30px"
           maxWidth="18rem"
+          link="/login"
         />
         <Button
           texte="Inscription"
@@ -59,6 +57,7 @@ const HomePage = () => {
           height="3em"
           fontSize="30px"
           maxWidth="18rem"
+          link="/signup"
         />
       </ContainerButton>
     </Container>

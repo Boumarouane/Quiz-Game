@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export default function Button({ texte, width, height, fontSize, maxWidth }) {
-  const ButtonStyle = styled.button`
+
+export default function Button({ texte, width, height, fontSize, maxWidth, link}) {
+  const ButtonStyle = styled(Link)`
     color: black;
     border-radius: 40px;
     width: ${width};
@@ -16,6 +18,10 @@ export default function Button({ texte, width, height, fontSize, maxWidth }) {
     background-size: 150% auto;
     transition: 1s;
     background-image: linear-gradient(to top right, #0d3c62 20%, #3d8fd1);
+    text-decoration:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     @media (max-width: 430px) {
         width:${maxWidth};
@@ -27,7 +33,9 @@ export default function Button({ texte, width, height, fontSize, maxWidth }) {
   `;
   return (
     <>
-      <ButtonStyle >{texte}</ButtonStyle>
+      <ButtonStyle 
+       to={link}
+      >{texte}</ButtonStyle>
     </>
   );
 }

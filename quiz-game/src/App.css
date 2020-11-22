@@ -123,6 +123,9 @@ p{
   p{
     margin: 5% 0 5% 0;
   }
+  .mediaQuizSvg{
+    font-size: 70px;
+  }
   .form input{
     padding-top: 25px;
   }
@@ -142,9 +145,7 @@ p{
   }
   
   .mediaQuizSvg{
-    font-size: 90px;
-    position: absolute;
-    top:30px; 
+    font-size: 40px;
   }
   .mediaGameSvg{
     font-size: 25px;

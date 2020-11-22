@@ -4,6 +4,8 @@ import styled from "styled-components";
 import imgBackground from "../images/923.jpg";
 import QuizGameSvg from "../SVG/QuizGameSvg";
 import Input from "../Input/Input";
+import { Link } from "react-router-dom";
+
 
 const Container = styled.div`
   display: flex;
@@ -60,9 +62,10 @@ const Signup = () => {
           height="3em"
           fontSize="20px"
           maxWidth="18rem"
+          link="/welcome"
         />
 
-        <p>Déjà inscrit ? Connectez-vous.</p>
+        <p>Déjà inscrit ? <Link to="/login" style={{color:"black"}}>Connectez-vous</Link> </p>
       </ContainerTwo>
     </Container>
   );
