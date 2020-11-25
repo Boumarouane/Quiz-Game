@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState, useContext, useEffect} from "react";
 import Button from "../Button/Button";
 import styled from "styled-components";
 import imgBackground from "../images/923.jpg";
 import QuizGameSvg from "../SVG/QuizGameSvg";
-import Input from "../Input/Input";
 import { Link } from "react-router-dom";
+import { FirebaseContext } from "../firebase/Encapsule";
 
 
 const Container = styled.div`
@@ -41,7 +41,39 @@ const LinkTexte = styled(Link)`
 color:black;
 `
 
-const Login = () => {
+const Login = (props) => {
+  
+  const firebase = useContext(FirebaseContext);
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorPassword, setErrorPassword] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (password.length > 5 && email !== ''){
+      setErrorPassword(true)
+    } else if (errorPassword){
+      setErrorPassword(false)
+    }
+  }, [password, email,errorPassword])
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    firebase
+      .loginUser(email, password)
+      .then(user => {
+        console.log(user)
+        setEmail('')
+        setPassword('')
+        props.history.push("/welcome")
+      })
+      .catch((error) => {
+        setError(error)
+        setEmail('')
+        setPassword('')
+      });
+  };
   return (
     <Container>
       <ContainerOne>
@@ -52,9 +84,44 @@ const Login = () => {
           positionY="50%"
         />
       </ContainerOne>
-      <ContainerTwo>
-        <Input texte="email" value="email" htmlFor="email" />
-        <Input texte="mot de passe" value="mdp" htmlFor="mdp" />
+      <ContainerTwo onSubmit={handleSubmit}>
+
+      {error !== '' && <span>{error.message}</span>}
+
+      <div className="body">
+          <div className="form">
+            <input
+              onChange={e => setEmail(e.target.value)}
+              name="text"
+              value={email}
+              type="email"
+              autoComplete="off"
+              required
+            />
+            <label className="label-name" htmlFor="email">
+              <span className="content-name">email</span>
+            </label>
+          </div>
+        </div>
+
+        {errorPassword ? <p style={{color:"red"}}>Holala</p> : null}
+
+        <div className="body">
+          <div className="form">
+            <input
+              onChange={e => setPassword(e.target.value)}
+              name="text"
+              value={password}
+              type="password"
+              autoComplete="off"
+              required
+            />
+            <label className="label-name" htmlFor="password">
+              <span className="content-name">Mot de passe</span>
+            </label>
+          </div>
+        </div>
+
         <p>Mot de passe oublié ? 
             <LinkTexte to="/recovery"> Récupérez-le ici</LinkTexte></p>
         <Button
@@ -65,7 +132,6 @@ const Login = () => {
           maxWidth="18rem"
           link="/welcome"
         />
-
         <p>Nouveau sur Quiz Game ? <LinkTexte to="/signup">Inscrivez-vous maintenant</LinkTexte></p>
       </ContainerTwo>
     </Container>

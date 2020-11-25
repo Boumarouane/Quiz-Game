@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 
-export default function Button({ texte, width, height, fontSize, maxWidth, link}) {
-  const ButtonStyle = styled(Link)`
+export default function Button({ texte, width, height, fontSize, maxWidth}) {
+  const ButtonStyle = styled.button`
     color: black;
     border-radius: 40px;
     width: ${width};
@@ -34,7 +33,6 @@ export default function Button({ texte, width, height, fontSize, maxWidth, link}
   return (
     <>
       <ButtonStyle 
-       to={link}
       >{texte}</ButtonStyle>
     </>
   );
